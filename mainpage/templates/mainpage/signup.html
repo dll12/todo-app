@@ -1,0 +1,12 @@
+<h1>Sign Up Form</h1>
+<br>
+{% if error %}
+<h2>	{{error}} </h2>
+<br>
+{% endif %}
+
+<form method="POST">
+		{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">Submit</button>
+</form>
