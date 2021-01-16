@@ -1,0 +1,24 @@
+{% extends 'mainpage/base.html' %}
+
+{% block content %}
+<h1><center>Todo View</center></h1>
+
+{{ error }}
+
+<form method="POST">
+		{{form.as_p}}
+		{% csrf_token %}
+		<button type="submit">Save</button>
+</form>
+
+<form method="POST" action="{% url 'completetodo' todo.id %}">
+		{% csrf_token %}
+		<button type="submit">Complete</button>
+</form>
+
+<form method="POST" action="{% url 'removetodo' todo.id %}">
+		{% csrf_token %}
+		<button type="submit">Remove</button>
+</form>
+
+{% endblock %}

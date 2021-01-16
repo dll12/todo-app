@@ -6,6 +6,36 @@
 		<h1>
 TODO List
 		</h1>
+<br>
+<form action='{% url 'createtodo' %}'>
+		{% csrf_token %}
+		<button type="submit">Create New Todo</button>
+</form>
 </center>
+
+<ul>
+		{% for todo in todos %}
+
+		<li>
+				{% if todo.important == True %}
+						<b>
+				{% endif %}
+
+				<a href="{{ todo.id }}">{{ todo.title }}</a>
+
+				{% if todo.important == True %}
+						</b>
+				{% endif %}
+
+				{% if todo.memo %}
+				-- 
+				{{ todo.memo }}
+
+				{% endif %}
+
+		</li>
+
+		{% endfor %}
+</ul>
 
 {% endblock %}
