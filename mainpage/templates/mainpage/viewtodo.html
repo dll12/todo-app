@@ -5,20 +5,25 @@
 
 {{ error }}
 
-<form method="POST">
+<form method="POST" class="container-fluid">
 		{{form.as_p}}
 		{% csrf_token %}
-		<button type="submit">Save</button>
+		<button type="submit" class="btn btn-info col">Save</button>
+</form>
+<br>
+<div class="row container-fluid">
+
+<form method="POST" action="{% url 'completetodo' todo.id %}" class="col">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-success">Complete</button>
 </form>
 
-<form method="POST" action="{% url 'completetodo' todo.id %}">
+<form method="POST" action="{% url 'removetodo' todo.id %}" class="col">
 		{% csrf_token %}
-		<button type="submit">Complete</button>
+		<button type="submit" class="btn btn-danger">Remove</button>
 </form>
-
-<form method="POST" action="{% url 'removetodo' todo.id %}">
-		{% csrf_token %}
-		<button type="submit">Remove</button>
-</form>
+</div>
+<br>
+<br>
 
 {% endblock %}

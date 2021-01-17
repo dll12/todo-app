@@ -8,24 +8,30 @@
 
   </head>
   <body>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-success text-info">
-  <div class="container-fluid" >
-			<a class="navbar-brand" href="{% url 'home' %}">Todos</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark text-info">
+		<div class="container-fluid text-end">
+			<a class="navbar-brand text-start" href="{% url 'home' %}">Todos</a>
 {% if user.is_authenticated %}
-Logged in as {{ user.username }}
-<form class="float-right" action="{% url 'logoutuser' %}" method="POST">
+<span class="container text-end">
+					<b>		Logged in as {{ user.username }} </b>
+<form action="{% url 'logoutuser' %}" method="POST">
 		{% csrf_token %}
-		<button class="btn btn-dark" type="submit">Logout</button>
+		<button class="btn btn-outline-light" type="submit">Logout</button>
 </form>
+</span>
 
 {% else %}
-<a class="btn btn-dark" href="{% url 'signup' %}">Sign Up</a>
-<a class="btn btn-dark" href="{% url 'loginuser' %}">Login</a>
+<span class="container text-end">
+<a class="btn btn-outline-light text-end" href="{% url 'signup' %}">Sign Up</a>
+<a class="btn btn-outline-light text-end" href="{% url 'loginuser' %}">Login</a>
+</span>
 {% endif %}
+
 <br>
-    </div>
+		</div>
 </nav>
 
+<br>
 <br>
 <br>
 <br>

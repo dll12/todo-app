@@ -9,27 +9,30 @@ TODO List
 <br>
 <form action='{% url 'createtodo' %}'>
 		{% csrf_token %}
-		<button type="submit">Create New Todo</button>
+		<button class="btn btn-dark" type="submit">Create New Todo</button>
 </form>
 </center>
+<br>
 
 <ul>
 		{% for todo in todos %}
 
 		<li>
 				{% if todo.important == True %}
-						<b>
-				{% endif %}
 
-				<a href="{{ todo.id }}">{{ todo.title }}</a>
+				<a class="btn btn-danger" href="{{ todo.id }}">{{ todo.title }}</a>
 
-				{% if todo.important == True %}
-						</b>
+				{% else %}
+
+				<a class="btn btn-success" href="{{ todo.id }}">{{ todo.title }}</a>
+
 				{% endif %}
 
 				{% if todo.memo %}
-				-- 
+				- 
 				{{ todo.memo }}
+				<br>
+				<br>
 
 				{% endif %}
 
@@ -37,5 +40,4 @@ TODO List
 
 		{% endfor %}
 </ul>
-
 {% endblock %}
