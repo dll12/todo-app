@@ -13,7 +13,7 @@
 <br>
 <div class="row container-fluid">
 
-<form method="POST" action="{% url 'completetodo' todo.id %}" class="col container-fluid">
+<form method="POST" action="{% url 'completetodo' todo.id %}" class="col">
 		{% csrf_token %}
 		<button type="submit" class="btn btn-success">Complete</button>
 </form>
